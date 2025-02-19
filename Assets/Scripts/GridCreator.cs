@@ -88,9 +88,12 @@ public class GridCreator : MonoBehaviour
                     {
                         Vector3 position = new Vector3(j * spacing, i * spacing, 0);
 
-                        var tile = Instantiate(gridPrefeb, position, Quaternion.identity);
-                        tile.GetComponentInChildren<TextMeshProUGUI>().text = rowCol[i,j];
-                        tile.transform.SetParent(parent.transform);
+                        var tileObj = Instantiate(gridPrefeb, position, Quaternion.identity);
+                        tileObj.GetComponentInChildren<TextMeshProUGUI>().text = rowCol[i,j];
+                        tileObj.GetComponent<TileData>().IsSelected = false;
+                        tileObj.GetComponent<TileData>().Letter = rowCol[i, j];
+                        /// assign tile type here in tile data class
+                        tileObj.transform.SetParent(parent.transform);
                     }
                 }
             }
